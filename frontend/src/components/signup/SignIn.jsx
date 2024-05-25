@@ -25,25 +25,18 @@ const SignIn = () => {
 
   };
 
-  const submit = async (e) => {
+ const submit = async (e) => {
     e.preventDefault(); 
-  try{
-    const response = await axios.post(
-      `${window.location.origin}/api/v1/signin`, Inputs
-      );
-      console.log(response.data);
-      if(response.data) {
-      sessionStorage.setItem("id", response.data.user._id);
-      dispatch(authActions.login());
-      history('/todo')
-      }else{
-        console.error("Response data or _id not found in the response.");
-      }
-    }catch(error){
-        console.error ("An error occured:", error);
+  
+    await axios.post(
+      `http://localhost:1000/api/v1/signin`, Inputs
+      ).then((response)=>{
+        sessionStorage.setItem("id",response.data.others._id);
+        dispatch(authActions.login());
+        history("/todo");
+      });
     }
-    
-  };
+  
 
   return (
     <div><div className="signup">
