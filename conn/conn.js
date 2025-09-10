@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const conn = async (req,res) => {
    try {
-    await mongoose.connect("mongodb+srv://raviraj:raviraj@cluster0.hbsw8fd.mongodb.net/").then(() =>{
+    await mongoose.connect("mongodb+srv://raviraj:raviraj@cluster0.hbsw8fd.mongodb.net/").then(() =>{// to connet the db
         console.log("connected")
     });
     
